@@ -14,11 +14,13 @@ fi
 mkdir -p $SERVER_DIR || exit 1
 
 echo "=== mrpack-install: installing or updating modpack ==="
-mrpack-install "${MRPACK_URL}" \
+mrpack-install --optional-disable-all "${MRPACK_URL}" \
   --server-dir "${SERVER_DIR}" || exit 1
 
 echo "=== Configuring Minecraft server==="
-echo ${JAVA_ARGS} > ./user_jsm_args.txt
+cd ${SERVER_DIR}
+
+echo ${JAVA_ARGS} > ./user_jvm_args.txt
 
 echo "=== Starting Minecraft server ==="
 
@@ -27,7 +29,5 @@ if [ ! -f eula.txt ]; then
 fi
 
 echo "=== Launching server: ${SERVER_JAR} ==="
-
-cd ${SERVER_DIR}
 
 exec ./run.sh
