@@ -107,4 +107,4 @@ done
 
 echo "=== Launching server: ${SERVER_JAR} ==="
 
-exec java -jar server.jar @user_jvm_args.txt
+exec java -jar quilt-server-launch.jar @user_jvm_args.txt
