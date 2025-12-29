@@ -102,7 +102,7 @@ fi
 for file in *.jar; do
   [ -e "$file" ] || exit 1   # no .jar files found
   mv -- "$file" "srv.jar"
-  exit 0
+  break
 done
 
 echo "=== Launching server: ${SERVER_JAR} ==="
