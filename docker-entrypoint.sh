@@ -15,7 +15,8 @@ mkdir -p $SERVER_DIR || exit 1
 
 echo "=== mrpack-install: installing or updating modpack ==="
 mrpack-install --optional-disable-all "${MRPACK_URL}" \
-  --server-dir "${SERVER_DIR}" || exit 1
+  --server-dir "${SERVER_DIR}" || exit 1 \
+  --server-file launcher.jar
 
 echo "=== Configuring Minecraft server==="
 cd ${SERVER_DIR}
@@ -101,4 +102,4 @@ fi
 
 echo "=== Launching server: ${SERVER_JAR} ==="
 
-exec ./run.sh
+exec java -jar launcher.jar @user_jvm_args.txt
