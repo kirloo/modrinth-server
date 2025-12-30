@@ -99,12 +99,6 @@ if [ ! -f eula.txt ]; then
   echo "eula=true" > eula.txt
 fi
 
-for file in *.jar; do
-  [ -e "$file" ] || exit 1   # no .jar files found
-  mv -- "$file" "srv.jar"
-  break
-done
-
 echo "=== Launching server: ${SERVER_JAR} ==="
 
-exec java -jar quilt-server-launch.jar @user_jvm_args.txt
+exec java -jar ${SERVER_JAR} @user_jvm_args.txt
